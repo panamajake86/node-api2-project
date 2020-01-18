@@ -1,9 +1,9 @@
 const express = require('express');
 const Posts = require('../data/db.js');
 
-// const commentsRouter = require('./comments/comments-router.js');
+const commentsRouter = require('./comments/comments-router.js');
 
-// server.use('/api/posts/:id/comments', commentsRouter);
+server.use('/api/posts/:id/comments', commentsRouter);
 
 const router = express.Router();
 
@@ -85,13 +85,3 @@ router.put('/:id', (req, res) => {
 });
 
 module.exports = router;
-
-// router.('/', (req, res) => {
-//     Posts.()
-//         .then(post => {
-//             res.status().json();
-//         })
-//         .catch(err => {
-//             res.status().json(, err);
-//         });
-// });
