@@ -7,7 +7,7 @@ const server = express();
 
 server.use(express.json());
 server.use('/api/posts', postsRouter);
-// server.use('/api/posts/:id/comments', commentsRouter);
+// server.use('/api/comments', commentsRouter);
 
 server.get('/', (req, res) => {
     res.send(`

@@ -3,13 +3,13 @@ const Posts = require('../data/db.js');
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
+router.get('/:id/comments', (req, res) => {
     const {id} = req.params;
     
     Posts.findPostComments(id)
         .then(post => {
             if (post) {
-                res.status(200).json();
+                res.status(200).json(post);
             } else {
                 res.status(404).json({ message: "The post with the specified ID does not exist." });
             }
@@ -19,7 +19,7 @@ router.get('/', (req, res) => {
         });
 });
 
-router.post('/', (req, res) => {
+router.post('/:id/comments', (req, res) => {
     const {id} = req.params;
     
     Posts.insertComment(id)
