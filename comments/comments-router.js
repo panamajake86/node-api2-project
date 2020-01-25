@@ -3,7 +3,7 @@ const Posts = require('../data/db.js');
 
 const router = express.Router();
 
-router.get('/:id/comments', (req, res) => {
+router.get('/:id', (req, res) => {
     const {id} = req.params;
     
     Posts.findPostComments(id)
@@ -20,9 +20,9 @@ router.get('/:id/comments', (req, res) => {
 });
 
 router.post('/:id/comments', (req, res) => {
-    const {id} = req.params;
+    const body = req.body;
     
-    Posts.insertComment(id)
+    Posts.insertComment(body)
         .then(post => {
             if (post) {
                 res.status(201).json(post);
